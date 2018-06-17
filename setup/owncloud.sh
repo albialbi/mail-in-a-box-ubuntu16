@@ -243,16 +243,20 @@ InstallNextcloud() {
 	# their github repositories.
 	mkdir -p /usr/local/lib/owncloud/apps
 
-	wget_verify https://github.com/nextcloud/contacts/releases/download/v1.5.3/contacts.tar.gz 78c4d49e73f335084feecd4853bd8234cf32615e /tmp/contacts.tgz || exit 1
+#	wget_verify https://github.com/nextcloud/contacts/releases/download/v1.5.3/contacts.tar.gz 78c4d49e73f335084feecd4853bd8234cf32615e /tmp/contacts.tgz || exit 1
+	wget_verify https://github.com/nextcloud/contacts/releases/download/v2.1.5/contacts.tar.gz b7460d15f1b78d492ed502d778c0c458d503ba17 /tmp/contacts.tgz || exit 1
 	tar xf /tmp/contacts.tgz -C /usr/local/lib/owncloud/apps/
 	rm /tmp/contacts.tgz
 
-	wget_verify https://github.com/nextcloud/calendar/releases/download/v1.5.3/calendar.tar.gz b370352d1f280805cc7128f78af4615f623827f8 /tmp/calendar.tgz || exit 1
+#	wget_verify https://github.com/nextcloud/calendar/releases/download/v1.5.3/calendar.tar.gz b370352d1f280805cc7128f78af4615f623827f8 /tmp/calendar.tgz || exit 1
+	wget_verify https://github.com/nextcloud/calendar/releases/download/v1.6.1/calendar.tar.gz f93a247cbd18bc624f427ba2a967d93ebb941f21 /tmp/calendar.tgz || exit 1
 	tar xf /tmp/calendar.tgz -C /usr/local/lib/owncloud/apps/
 	rm /tmp/calendar.tgz
     
-    local SPREED_VERSION=2.0.1
-    wget_verify https://github.com/nextcloud/spreed/archive/v${SPREED_VERSION}.tar.gz 6b768afd685e84bef3414c4af734734f47b35298 /tmp/spreed.tgz || exit 1
+#    local SPREED_VERSION=2.0.1
+    local SPREED_VERSION=3.2.2
+#    wget_verify https://github.com/nextcloud/spreed/archive/v${SPREED_VERSION}.tar.gz 6b768afd685e84bef3414c4af734734f47b35298 /tmp/spreed.tgz || exit 1
+    wget_verify https://github.com/nextcloud/spreed/releases/download/v${SPREED_VERSION/v${SPREED_VERSION}.tar.gz f3dae6c83baa4fe1f89e2999a9ef3ff2f5b8dc0f /tmp/spreed.tgz || exit 1
     tar xf /tmp/spreed.tgz -C /usr/local/lib/owncloud/apps/
     rm /tmp/spreed.tgz
     mv /usr/local/lib/owncloud/apps/spreed-${SPREED_VERSION} /usr/local/lib/owncloud/apps/spreed
@@ -286,7 +290,7 @@ InstallNextcloud() {
 	# Make sure permissions are correct or the upgrade step won't run.
 	# ${STORAGE_ROOT}/owncloud may not yet exist, so use -f to suppress
 	# that error.
-	chown -f -R www-data.www-data ${STORAGE_ROOT}/owncloud /usr/local/lib/owncloud
+	chown -f -R www-data:www-data ${STORAGE_ROOT}/owncloud /usr/local/lib/owncloud
 
 	# If this isn't a new installation, immediately run the upgrade script.
 	# Then check for success (0=ok and 3=no upgrade needed, both are success).
@@ -347,7 +351,7 @@ InstallOwncloud() {
 	# Make sure permissions are correct or the upgrade step won't run.
 	# ${STORAGE_ROOT}/owncloud may not yet exist, so use -f to suppress
 	# that error.
-	chown -f -R www-data.www-data ${STORAGE_ROOT}/owncloud /usr/local/lib/owncloud
+	chown -f -R www-data:www-data ${STORAGE_ROOT}/owncloud /usr/local/lib/owncloud
 
 	# If this isn't a new installation, immediately run the upgrade script.
 	# Then check for success (0=ok and 3=no upgrade needed, both are success).
@@ -416,7 +420,7 @@ if [ ! -d /usr/local/lib/owncloud/ ] \
 				echo ";";
 			?>
 EOF
-			chown www-data.www-data ${STORAGE_ROOT}/owncloud/config.php
+			chown www-data:www-data ${STORAGE_ROOT}/owncloud/config.php
 
 			# We can now install owncloud 9.0.11
 			InstallOwncloud 9.0.11 fc8bad8a62179089bc58c406b28997fb0329337b
@@ -523,7 +527,7 @@ EOF
 EOF
 
 	# Set permissions
-	chown -R www-data.www-data ${STORAGE_ROOT}/owncloud /usr/local/lib/owncloud
+	chown -R www-data:www-data ${STORAGE_ROOT}/owncloud /usr/local/lib/owncloud
 
 	# Execute Nextcloud's setup step, which creates the Nextcloud sqlite database.
 	# It also wipes it if it exists. And it updates config.php with database
@@ -566,7 +570,7 @@ var_export(\$CONFIG);
 echo ";";
 ?>
 EOF
-chown www-data.www-data ${STORAGE_ROOT}/owncloud/config.php
+chown www-data:www-data ${STORAGE_ROOT}/owncloud/config.php
 
 # Enable/disable apps. Note that this must be done after the Nextcloud setup.
 # The firstrunwizard gave Josh all sorts of problems, so disabling that.
