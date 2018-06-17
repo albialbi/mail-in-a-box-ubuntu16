@@ -58,7 +58,7 @@ if test ! "`dpkg -l | grep -o postgrey`"; then
 fi
 
 echo "Installing Postfix (SMTP server)..."
-apt_install postfix postfix-pcre ca-certificates # postgrey
+apt_install postfix postfix-pcre ca-certificates postsrsd # postgrey
 
 # ### Basic Settings
 
@@ -224,6 +224,13 @@ tools/editconf.py /etc/default/postgrey \
 # The same limit is specified in nginx.conf for mail submitted via webmail and Z-Push.
 tools/editconf.py /etc/postfix/main.cf \
 	message_size_limit=134217728
+
+# postsrsd Config in main.cf
+tools/editconf.py /etc/postfix/main.cf \
+	sender_canonical_maps = tcp:127.0.0.1:10001 \
+	sender_canonical_classes = envelope_sender \
+	recipient_canonical_maps = tcp:127.0.0.1:10002 \
+	recipient_canonical_classes = envelope_recipient \
 
 # Allow the two SMTP ports in the firewall.
 
