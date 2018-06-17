@@ -1,6 +1,19 @@
 Mail-in-a-Box (Ubuntu 16.04 aware)
 ==================================
 
+**Changes from albi
+
+* added postsrsd for mail forwadring and sfp
+* roundcube update 1.3.6
+* nextcloud update 13.0.4
+* nextcloud calendar 1.6.1
+* nextcloud contacts 2.1.5
+* nextcloud spreed 3.2.2
+* roundcube enigma (pgp) activated
+* roundcube standard changes
+
+
+
 **This is a fork**
 
 For original sources, see [Mail-in-a-Box](https://github.com/mail-in-a-box/mailinabox)!
