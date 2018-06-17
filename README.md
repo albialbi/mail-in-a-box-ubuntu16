@@ -3,7 +3,7 @@ Mail-in-a-Box (Ubuntu 16.04 aware)
 
 **Changes from albi**
 
-* added postsrsd for mail forwadring and sfp
+* added postsrsd for mail forwarding and spf
 * roundcube update 1.3.6
 * nextcloud update 13.0.4
 * nextcloud calendar 1.6.1
