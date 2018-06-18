@@ -254,9 +254,9 @@ InstallNextcloud() {
 	rm /tmp/calendar.tgz
     
 #    local SPREED_VERSION=2.0.1
-    local SPREED_VERSION=3.2.2
+    local SPREED_VERSION=3.1.0
 #    wget_verify https://github.com/nextcloud/spreed/archive/v${SPREED_VERSION}.tar.gz 6b768afd685e84bef3414c4af734734f47b35298 /tmp/spreed.tgz || exit 1
-    wget_verify https://github.com/nextcloud/spreed/releases/download/v${SPREED_VERSION/v${SPREED_VERSION}.tar.gz f3dae6c83baa4fe1f89e2999a9ef3ff2f5b8dc0f /tmp/spreed.tgz || exit 1
+    wget_verify https://github.com/nextcloud/spreed/releases/download/v${SPREED_VERSION/v${SPREED_VERSION}.tar.gz 142d3fa83313c69331ee52fbb2c18037f1b008ff /tmp/spreed.tgz || exit 1
     tar xf /tmp/spreed.tgz -C /usr/local/lib/owncloud/apps/
     rm /tmp/spreed.tgz
     mv /usr/local/lib/owncloud/apps/spreed-${SPREED_VERSION} /usr/local/lib/owncloud/apps/spreed

@@ -8,7 +8,7 @@ Mail-in-a-Box (Ubuntu 16.04 aware)
 * nextcloud update 13.0.4
 * nextcloud calendar 1.6.1
 * nextcloud contacts 2.1.5
-* nextcloud spreed 3.2.2
+* nextcloud spreed 3.1.0
 * roundcube enigma (pgp) activated
 * roundcube standard changes
 
